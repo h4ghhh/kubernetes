@@ -811,6 +811,11 @@ func printPod(pod *api.Pod, options printers.GenerateOptions) ([]metav1.TableRow
 				reason = "NotReady"
 			}
 		}
+
+		// if node offline, pod status convert to "NotReady"
+		if !hasPodReadyCondition(pod.Status.Conditions) && reason != "Completed"{
+                        reason = "NotReady"
+                }
 	}
 
 	if pod.DeletionTimestamp != nil && pod.Status.Reason == node.NodeUnreachablePodReason {
