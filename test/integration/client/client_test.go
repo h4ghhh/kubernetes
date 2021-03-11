@@ -29,6 +29,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 	appsv1 "k8s.io/api/apps/v1"
 	v1 "k8s.io/api/core/v1"
+	eventsv1 "k8s.io/api/events/v1"
 	"k8s.io/apimachinery/pkg/api/equality"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/api/resource"
@@ -460,6 +461,109 @@ func TestAPIVersions(t *testing.T) {
 		}
 	}
 	t.Errorf("Server does not support APIVersion used by client. Server supported APIVersions: '%v', client APIVersion: '%v'", versions, clientVersion)
+}
+
+func TestEventValidation(t *testing.T) {
+	result := kubeapiservertesting.StartTestServerOrDie(t, nil, nil, framework.SharedEtcd())
+	defer result.TearDownFn()
+
+	client := clientset.NewForConfigOrDie(result.ClientConfig)
+
+	createNamespace := func(namespace string) string {
+		if namespace == "" {
+			namespace = metav1.NamespaceDefault
+		}
+		return namespace
+	}
+
+	mkCoreEvent := func(ver string, ns string) *v1.Event {
+		name := fmt.Sprintf("%v-%v-event", ver, ns)
+		namespace := createNamespace(ns)
+		return &v1.Event{
+			ObjectMeta: metav1.ObjectMeta{
+				Namespace: namespace,
+				Name:      name,
+			},
+			InvolvedObject: v1.ObjectReference{
+				Namespace: ns,
+				Name:      name,
+			},
+			Type:                "Normal",
+			EventTime:           metav1.MicroTime{Time: time.Now()},
+			ReportingController: "test-controller",
+			ReportingInstance:   "test-1",
+			Reason:              fmt.Sprintf("event %v test", name),
+			Action:              "Testing",
+		}
+	}
+	mkEvent := func(ver string, ns string) *eventsv1.Event {
+		name := fmt.Sprintf("%v-%v-event", ver, ns)
+		namespace := createNamespace(ns)
+		return &eventsv1.Event{
+			ObjectMeta: metav1.ObjectMeta{
+				Namespace: namespace,
+				Name:      name,
+			},
+			Regarding: v1.ObjectReference{
+				Namespace: ns,
+				Name:      name,
+			},
+			Type:                "Normal",
+			EventTime:           metav1.MicroTime{Time: time.Now()},
+			ReportingController: "test-controller",
+			ReportingInstance:   "test-2",
+			Reason:              fmt.Sprintf("event %v test", name),
+			Action:              "Testing",
+		}
+	}
+
+	testcases := []struct {
+		name      string
+		namespace string
+		hasError  bool
+	}{
+		{
+			name:      "Involved object is namespaced resource",
+			namespace: "kube-system",
+			hasError:  false,
+		},
+		{
+			name:      "Involved object is cluster resource",
+			namespace: "",
+			hasError:  false,
+		},
+	}
+
+	for _, test := range testcases {
+		// create test
+		oldEventObj := mkCoreEvent("corev1", test.namespace)
+		corev1Event, err := client.CoreV1().Events(oldEventObj.Namespace).Create(context.TODO(), oldEventObj, metav1.CreateOptions{})
+		if err != nil && !test.hasError {
+			t.Errorf("%v, call Create failed, expect has error: %v, but got: %v", test.name, test.hasError, err)
+		}
+		newEventObj := mkEvent("eventsv1", test.namespace)
+		eventsv1Event, err := client.EventsV1().Events(newEventObj.Namespace).Create(context.TODO(), newEventObj, metav1.CreateOptions{})
+		if err != nil && !test.hasError {
+			t.Errorf("%v, call Create failed, expect has error: %v, but got: %v", test.name, test.hasError, err)
+		}
+		if corev1Event.Namespace != eventsv1Event.Namespace {
+			t.Errorf("%v, events created by different api client have different namespaces that isn't expected", test.name)
+		}
+		// update test
+		corev1Event.EventTime = metav1.MicroTime{Time: time.Unix(1505828956, 0)}
+		corev1Event, err = client.CoreV1().Events(corev1Event.Namespace).Update(context.TODO(), corev1Event, metav1.UpdateOptions{})
+		if err != nil && !test.hasError {
+			t.Errorf("%v, call Update failed, expect has error: %v, but got: %v", test.name, test.hasError, err)
+		}
+		eventsv1Event.EventTime = metav1.MicroTime{Time: time.Unix(1505828956, 0)}
+		eventsv1Event, err = client.EventsV1().Events(eventsv1Event.Namespace).Update(context.TODO(), eventsv1Event, metav1.UpdateOptions{})
+		if err != nil && !test.hasError {
+			t.Errorf("%v, call Update failed, expect has error: %v, but got: %v", test.name, test.hasError, err)
+		}
+		if corev1Event.Namespace != eventsv1Event.Namespace {
+			t.Errorf("%v, events updated by different api client have different namespaces that isn't expected", test.name)
+		}
+	}
 }
 
 func TestSingleWatch(t *testing.T) {

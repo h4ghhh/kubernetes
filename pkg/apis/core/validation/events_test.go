@@ -254,7 +254,7 @@ func TestValidateEventForNewV1beta1Events(t *testing.T) {
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -414,7 +414,7 @@ func TestValidateEventCreateForNewV1Events(t *testing.T) {
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -433,7 +433,7 @@ func TestValidateEventCreateForNewV1Events(t *testing.T) {
 		{
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -482,7 +482,7 @@ func TestValidateEventCreateForNewV1Events(t *testing.T) {
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -501,7 +501,7 @@ func TestValidateEventCreateForNewV1Events(t *testing.T) {
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -520,7 +520,7 @@ func TestValidateEventCreateForNewV1Events(t *testing.T) {
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -538,7 +538,7 @@ func TestValidateEventCreateForNewV1Events(t *testing.T) {
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -585,7 +585,7 @@ zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz`,
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -605,7 +605,7 @@ zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz`,
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -626,7 +626,7 @@ zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz`,
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -647,7 +647,7 @@ zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz`,
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -668,7 +668,7 @@ zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz`,
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -691,7 +691,7 @@ zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz`,
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -715,7 +715,7 @@ zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz`,
 			Event: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      "test",
-					Namespace: metav1.NamespaceSystem,
+					Namespace: metav1.NamespaceDefault,
 				},
 				InvolvedObject: core.ObjectReference{
 					APIVersion: "v1",
@@ -756,7 +756,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "2",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -777,7 +777,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "2",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -802,7 +802,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -819,7 +819,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -840,7 +840,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -857,7 +857,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -878,7 +878,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -896,7 +896,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -918,7 +918,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -935,7 +935,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -959,7 +959,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -976,7 +976,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -998,7 +998,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1015,7 +1015,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1037,7 +1037,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1054,7 +1054,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1076,7 +1076,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1093,7 +1093,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1114,7 +1114,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1131,7 +1131,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1152,7 +1152,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1169,7 +1169,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1190,7 +1190,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1210,7 +1210,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1231,7 +1231,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1248,7 +1248,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1269,7 +1269,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			newEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
@@ -1286,7 +1286,7 @@ func TestValidateEventUpdateForNewV1Events(t *testing.T) {
 			oldEvent: &core.Event{
 				ObjectMeta: metav1.ObjectMeta{
 					Name:            "test",
-					Namespace:       metav1.NamespaceSystem,
+					Namespace:       metav1.NamespaceDefault,
 					ResourceVersion: "1",
 				},
 				InvolvedObject: core.ObjectReference{
