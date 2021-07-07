@@ -454,14 +454,6 @@ func GetEtcdStorageDataForNamespace(namespace string) map[schema.GroupVersionRes
 		},
 		// --
 
-		// k8s.io/kubernetes/pkg/apis/scheduling/v1alpha1
-		gvr("scheduling.k8s.io", "v1alpha1", "priorityclasses"): {
-			Stub:             `{"metadata":{"name":"pc1"},"Value":1000}`,
-			ExpectedEtcdPath: "/registry/priorityclasses/pc1",
-			ExpectedGVK:      gvkP("scheduling.k8s.io", "v1", "PriorityClass"),
-		},
-		// --
-
 		// k8s.io/kubernetes/pkg/apis/scheduling/v1beta1
 		gvr("scheduling.k8s.io", "v1beta1", "priorityclasses"): {
 			Stub:             `{"metadata":{"name":"pc2"},"Value":1000}`,
